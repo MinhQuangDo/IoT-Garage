@@ -1,0 +1,80 @@
+/* ======================================================= */
+/* general styles */
+h1 {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.col-3 {
+  width: 25%;
+  display: table-cell;
+}
+
+.col-6 {
+  width: 50%;
+  display: table-cell;
+}
+
+.col-9 {
+  width: 75%;
+  display: table-cell;
+}
+
+.col-container {
+  display: table;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 15px;
+  font-size: 20px;
+}
+
+#autoCloseTimeSlider, #lightBrightnessSlider, #lightOffTimeSlider {
+  width: 65%;
+}
+
+/* ======================================================= */
+/* make slider work in responsive mode */
+/* https://stackoverflow.com/questions/41170867/html5-sliders-disappear-under-chromes-device-mode*/
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: gray;
+  height: 18px;
+  width: 18px;
+  margin: -8px -8px -8px 0px;
+  border-radius: 99px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  display: table-cell;
+  height: 4px;
+  background: gray;
+}
+
+/* ======================================================= */
+/* For logout button */
+button {
+  background-color: #3b5998;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  font-size: 18px;
+  margin: 10px;
+}
+
+#advancedControl * {
+  font-size: 20px;
+}
+
+.userIn {
+  width: 100%;
+  padding: 15px 20px;
+  margin: 10px;
+  border: solid gray 1px;
+}

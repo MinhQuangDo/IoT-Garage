@@ -8,8 +8,28 @@
  *
  * This routine should be called only once from setup()
  */
+ const int doorController = D3;
+ const int faultSignal = D4;
+ const int openSwitch = D5;
+ const int closeSwitch = D6;
+ const int closingLED = D2;
+ const int openingLED = D1;
+ const int garageLight = D0;
+
 void setupHardware() {
-  // TODO
+  Serial.begin(9600);
+  pinMode(doorController, INPUT_PULLUP);
+  pinMode(faultSignal, INPUT_PULLUP);
+  pinMode(openSwitch, INPUT_PULLUP);
+  pinMode(closeSwitch, INPUT_PULLUP);
+  pinMode(closingLED, OUTPUT);
+  pinMode(openingLED, OUTPUT);
+  pinMode(garageLight, OUTPUT);
+
+  digitalWrite(closingLED, LOW);
+  digitalWrite(openingLED, LOW);
+  digitalWrite(garageLight, LOW);
+
 }
 
 /**
@@ -21,7 +41,7 @@ void setupHardware() {
  * return  true if buttons is currently pressed, false otherwise
  */
 boolean isButtonPressed() {
-  // TODO
+  return digitalRead(doorController) == 0;
 }
 
 /**
@@ -33,7 +53,7 @@ boolean isButtonPressed() {
  * return  true if the door is completely closed, false otherwise
  */
 boolean isDoorFullyClosed() {
-  // TODO
+  return digitalRead(closeSwitch) == 0;
 }
 
 /**
@@ -45,7 +65,7 @@ boolean isDoorFullyClosed() {
  * return  true if the door is has experienced a fault
  */
 boolean isFaultActive() {
-  // TODO
+  return digitalRead(faultSignal) == 0;
 }
 
 /**
@@ -57,7 +77,7 @@ boolean isFaultActive() {
  * return  true if the door is completely open, false otherwise
  */
 boolean isDoorFullyOpen() {
-  // TODO
+  return digitalRead(openSwitch) == 0;
 }
 
 /**
@@ -69,7 +89,7 @@ boolean isDoorFullyOpen() {
  * return void
  */
 void startMotorOpening() {
-  // TODO
+  digitalWrite(openingLED, HIGH);
 }
 
 /**
@@ -81,7 +101,7 @@ void startMotorOpening() {
  * return void
  */
 void startMotorClosing() {
-  // TODO
+  digitalWrite(closingLED, HIGH);
 }
 
 /**
@@ -92,7 +112,9 @@ void startMotorClosing() {
  * return void
  */
 void stopMotor() {
-  // TODO
+  digitalWrite(openingLED, LOW);
+  digitalWrite(closingLED, LOW);
+
 }
 
 /**
@@ -106,7 +128,7 @@ void stopMotor() {
  * return void
  */
 void setLight(boolean on) {
-  // TODO
+  digitalWrite(garageLight, on);
 }
 
 /**
@@ -120,7 +142,7 @@ void setLight(boolean on) {
  * return void
  */
 void setLightPWM(int cyclePct) {
-  // TODO
+    analogWrite(garageLight, cyclePct * 255 / 100);
 }
 
 /**
@@ -133,7 +155,7 @@ void setLightPWM(int cyclePct) {
  * return void
  */
 void sendDebug(String message) {
-  // TODO
+  Serial.println(message);
 }
 
 #endif

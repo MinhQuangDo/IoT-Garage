@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Garage App</title>
+  <link rel="stylesheet" href="control.css">
+  <script src="./resources/particle/particle.min.js"></script>
+</head>
+
+<body>
+	<!-- Login Page -->
+    <div class="container" id="loginPage" hidden>
+    	<h1>Login</h1>
+	    Username
+	    <input type="text" class="userIn" placeholder="Enter Username" name="uname" required>
+
+	    Password
+	    <input type="password" class="userIn" placeholder="Enter Password" name="psw" required>
+
+	    <label>
+	      <input type="checkbox" name="remember"> Remember me
+	    </label>
+
+    	<button type="submit" id="loginButton">Login</button>
+    	<button type="submit" id="createAccountButton">Create an account here</button>
+
+	</div>
+
+	<!-- Create account page -->
+    <div class="container" id="createAccountPage" hidden>
+    	<h1>Create Account</h1>
+	    Username
+	    <input type="text" class="userIn" placeholder="Enter Username" name="uname" required>
+
+	    Password
+	    <input type="password" class="userIn" placeholder="Enter Password" name="psw" required>
+
+	    Retype Password
+	    <input type="password" class="userIn" placeholder="Enter Password" name="psw" required>
+
+    	<button type="submit">Submit</button>
+    	<button type="submit" id="backButton">Back</button>
+	</div>
+
+	<!-- Door and Light Control -->
+	<div id="allControls">
+		<h1>Control</h1>
+		<!-- Log out button -->
+	    <div class="col-container">
+	    	<button type="submit" id="logOutButton">Logout</button>
+	    </div>
+
+	    <!-- Door Status Label -->
+		<p>
+			<strong>Door Status:</strong> <span id="doorStatus"></span> <br>
+		</p>
+
+		<!-- Light Status Label -->
+		<p>
+			<strong>Light Status:</strong> <span id="lightStatus"></span> <br>
+		</p>
+
+    <!-- Light Status Label -->
+		<p>
+			<strong>Fault:</strong> <span id="faultStatus"></span> <br>
+		</p>
+
+		<!-- Button to open/close the door -->
+	    <div class="col-container">
+	    	<button type="submit" id="doorButton">Door</button>
+	    </div>
+
+	    <!-- Button to turn the light on/off -->
+	    <div class="col-container">
+	    	<button type="submit" id="lightButton">Light</button>
+	    </div>
+
+
+	    <h1>Advanced</h1>
+
+
+	    <div id="advancedControl">
+	    	<!-- Show status of auto-close -->
+			<p>
+				<strong>Auto Close Status:</strong> <span id="autoCloseStatus"></span> <br>
+			</p>
+
+		<!-- Button to turn the auto-close on/off -->
+			<div class="col-container">
+		  		<button type="submit" id="autoCloseButton">Auto Close Toggle</button>
+		  	</div>
+
+			<!-- Auto-close time slider -->
+			<div class="col-container">
+				<div class="col-6">
+		      		Auto Close Time
+		    	</div>
+		    	<div class="col-6">
+		      		<input type="range" min=5 max=60 value=30 id="autoCloseTimeSlider">
+		      		<span id="autoCloseTime" class="valueWithSlider"></span>
+		    	</div>
+		  	</div>
+
+		  	<!-- Light brightness slider -->
+			<div class="col-container">
+			    <div class="col-6">
+			      Light Brightness
+			    </div>
+			    <div class="col-6">
+			      <input type="range" min=25 max=100 value=100 id="lightBrightnessSlider">
+			      <span id="lightBrightness" class="valueWithSlider"></span>
+			    </div>
+			</div>
+
+			<!-- Light auto-off time slider -->
+			<div class="col-container">
+			    <div class="col-6">
+			      Light Off Time
+			    </div>
+			    <div class="col-6">
+			      <input type="range" min=1 max=60 value=30 id="lightOffTimeSlider">
+			      <span id="lightOffTime" class="valueWithSlider"></span>
+			    </div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="./GarageApp.js"></script>
+  	<script src="./Garage.js"></script>
+
+</body>
+</html>
