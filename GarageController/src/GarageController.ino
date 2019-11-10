@@ -19,7 +19,7 @@ bool haveFault = false;               //whether there is a fault
 int lightBrightness = 100;
 bool lightOn = false;
 unsigned int lightAutoOffTime = 30000;
-bool hasStartLightTimer = false;
+bool hasStartLightTimer = false;      //whether the light timer has started
 
 //timer to fade the light in 5 seconds
 Timer lightOut(50, fadeLight);
@@ -64,6 +64,7 @@ int setAutoCloseEnabled (String status) {
   return 0;
 }
 
+//function called after the autoOffTimer is done
 void performAutoOff() {
   if (lightOn) {
     cycle = lightBrightness - 1;
@@ -88,8 +89,9 @@ int doorButtonPress(String nothing) {
     return 0;
 }
 
-int lightButtonPress(String status) {
-  if (status == "true") {
+//toggle light
+int lightButtonPress(String nothing) {
+  if (!lightOn) {
     lightOn = true;
     lightOut.stop();
     setLightPWM(lightBrightness);
@@ -104,6 +106,7 @@ int lightButtonPress(String status) {
   return 0;
 }
 
+//change light brightness
 int lightBrightnessChange(String brightness) {
   lightBrightness = brightness.toInt();
   shouldPublish = true;
@@ -121,11 +124,14 @@ int setAutoCloseTime(String time) {
   return 0;
 }
 
-//publish 4 information:
+//publish 7 information:
 // +/ door's state
 // +/ is auto-close activated
 // +/ how much time before auto-close
 // +/ has fault
+// +/ light brightness
+// +/ light auto-off
+// +/ light on/off
 int publishState(String nothing) {
   String data = "{\"doorState\":";
   if (doorState == OPENING){

@@ -87,6 +87,7 @@ const doorStatus = {
         particle.callFunction(functionData).then(onSuccess,onFailure)
       },
 
+      //function called when light button is hit
       setLightPowered: function() {
         var status;
         if (this.lightPowered) {
@@ -100,7 +101,7 @@ const doorStatus = {
         var functionData = {
           deviceId:myDeviceId,
           name: "lightButtonPress",
-          argument: status,
+          argument: "",
           auth: myParticleAccessToken
        }
 
@@ -111,6 +112,7 @@ const doorStatus = {
         particle.callFunction(functionData).then(onSuccess,onFailure)
       },
 
+      //function to change light brightness
       setLightBrightness: function(brightness) {
         this.lightBrightness = brightness
 
@@ -174,6 +176,7 @@ const doorStatus = {
 
       },
 
+      //change auto-off time of light
       setLightAutoOffTime: function(time) {
         this.lightAutoOffTime = time
         let timeString = String(time * 1000)
