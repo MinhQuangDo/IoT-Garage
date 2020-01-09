@@ -1,4 +1,4 @@
-# IoT Doorbell
+# IoT Garage
 
 Implementation of a IoT Garage app and remote using HTML, CSS, JS for UI and Particle Photon, C++ for controller. It supports opening/closing the door, turning on/off the light and using auto close for the door and auto off for the light. There is also a program for the remote.
 
